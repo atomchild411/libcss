@@ -52,6 +52,7 @@ DIR_SOURCES :=				\
 	font_family.c			\
 	font_weight.c			\
 	grid.c				\
+	background_image.c		\
 	list_style.c			\
 	list_style_type.c		\
 	margin.c			\
