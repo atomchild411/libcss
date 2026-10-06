@@ -493,6 +493,19 @@ static const char *opcode_names[] = {
 	"order",
 	"fill-opacity",
 	"stroke-opacity",
+	"grid-template-columns",
+	"grid-template-rows",
+	"grid-template-areas",
+	"grid-auto-columns",
+	"grid-auto-rows",
+	"grid-auto-flow",
+	"grid-column-start",
+	"grid-column-end",
+	"grid-row-start",
+	"grid-row-end",
+	"row-gap",
+	"justify-items",
+	"justify-self",
 };
 
 static void dump_css_fixed(css_fixed f, char **ptr)
