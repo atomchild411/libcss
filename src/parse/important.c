@@ -133,6 +133,12 @@ void css__make_style_important(css_style *style)
 			case CSS_PROP_GRID_COLUMN_END:
 			case CSS_PROP_GRID_ROW_START:
 			case CSS_PROP_GRID_ROW_END:
+			case CSS_PROP_BORDER_TOP_LEFT_RADIUS:
+			case CSS_PROP_BORDER_TOP_RIGHT_RADIUS:
+			case CSS_PROP_BORDER_BOTTOM_RIGHT_RADIUS:
+			case CSS_PROP_BORDER_BOTTOM_LEFT_RADIUS:
+			case CSS_PROP_BOX_SHADOW:
+			case CSS_PROP_TEXT_SHADOW:
 				if (value == GRID_STRING_SET)
 					offset++; /* string table entry */
 				break;

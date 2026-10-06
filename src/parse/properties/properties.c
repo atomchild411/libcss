@@ -179,7 +179,14 @@ const css_prop_handler property_handlers[LAST_PROP + 1 - FIRST_PROP] =
 	css__parse_grid_template_rows,
 	css__parse_justify_items,
 	css__parse_justify_self,
-	css__parse_row_gap
+	css__parse_row_gap,
+	css__parse_border_radius,
+	css__parse_border_bottom_left_radius,
+	css__parse_border_bottom_right_radius,
+	css__parse_border_top_left_radius,
+	css__parse_border_top_right_radius,
+	css__parse_box_shadow,
+	css__parse_text_shadow
 };
 
 /** Mapping from property bytecode index to bytecode unit class mask. */

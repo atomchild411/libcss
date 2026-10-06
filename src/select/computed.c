@@ -216,6 +216,24 @@ css_error css_computed_style_destroy(css_computed_style *style)
 	if (style->i.grid_row_end != NULL)
 		lwc_string_unref(style->i.grid_row_end);
 
+	if (style->i.border_top_left_radius != NULL)
+		lwc_string_unref(style->i.border_top_left_radius);
+
+	if (style->i.border_top_right_radius != NULL)
+		lwc_string_unref(style->i.border_top_right_radius);
+
+	if (style->i.border_bottom_right_radius != NULL)
+		lwc_string_unref(style->i.border_bottom_right_radius);
+
+	if (style->i.border_bottom_left_radius != NULL)
+		lwc_string_unref(style->i.border_bottom_left_radius);
+
+	if (style->i.box_shadow != NULL)
+		lwc_string_unref(style->i.box_shadow);
+
+	if (style->i.text_shadow != NULL)
+		lwc_string_unref(style->i.text_shadow);
+
 	free(style);
 
 	return CSS_OK;
@@ -1151,6 +1169,42 @@ uint8_t css_computed_grid_row_end(const css_computed_style *style,
 		lwc_string **string)
 {
 	return get_grid_row_end(style, string);
+}
+
+uint8_t css_computed_border_top_left_radius(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_border_top_left_radius(style, string);
+}
+
+uint8_t css_computed_border_top_right_radius(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_border_top_right_radius(style, string);
+}
+
+uint8_t css_computed_border_bottom_right_radius(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_border_bottom_right_radius(style, string);
+}
+
+uint8_t css_computed_border_bottom_left_radius(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_border_bottom_left_radius(style, string);
+}
+
+uint8_t css_computed_box_shadow(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_box_shadow(style, string);
+}
+
+uint8_t css_computed_text_shadow(const css_computed_style *style,
+		lwc_string **string)
+{
+	return get_text_shadow(style, string);
 }
 
 uint8_t css_computed_grid_auto_flow(const css_computed_style *style)

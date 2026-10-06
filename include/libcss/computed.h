@@ -507,6 +507,30 @@ uint8_t css_computed_grid_row_end(
 		const css_computed_style *style,
 		lwc_string **string);
 
+uint8_t css_computed_border_top_left_radius(
+		const css_computed_style *style,
+		lwc_string **string);
+
+uint8_t css_computed_border_top_right_radius(
+		const css_computed_style *style,
+		lwc_string **string);
+
+uint8_t css_computed_border_bottom_right_radius(
+		const css_computed_style *style,
+		lwc_string **string);
+
+uint8_t css_computed_border_bottom_left_radius(
+		const css_computed_style *style,
+		lwc_string **string);
+
+uint8_t css_computed_box_shadow(
+		const css_computed_style *style,
+		lwc_string **string);
+
+uint8_t css_computed_text_shadow(
+		const css_computed_style *style,
+		lwc_string **string);
+
 uint8_t css_computed_grid_auto_flow(
 		const css_computed_style *style);
 

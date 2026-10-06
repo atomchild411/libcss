@@ -254,6 +254,13 @@ const stringmap_entry stringmap[LAST_KNOWN] = {
 	SMAP("justify-items"),
 	SMAP("justify-self"),
 	SMAP("row-gap"),
+	SMAP("border-radius"),
+	SMAP("border-bottom-left-radius"),
+	SMAP("border-bottom-right-radius"),
+	SMAP("border-top-left-radius"),
+	SMAP("border-top-right-radius"),
+	SMAP("box-shadow"),
+	SMAP("text-shadow"),
 
 	SMAP("inherit"),
 	SMAP("unset"),

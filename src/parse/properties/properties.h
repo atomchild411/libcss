@@ -523,6 +523,27 @@ css_error css__parse_justify_self(css_language *c,
 css_error css__parse_row_gap(css_language *c,
 		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result);
+css_error css__parse_border_radius(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_border_bottom_left_radius(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_border_bottom_right_radius(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_border_top_left_radius(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_border_top_right_radius(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_box_shadow(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
+css_error css__parse_text_shadow(css_language *c,
+		const parserutils_vector *vector, int32_t *ctx,
+		css_style *result);
 css_error css__parse_z_index(css_language *c,
 		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result);

@@ -140,8 +140,8 @@ static inline uint8_t get_background_color(const css_computed_style *style,
 #undef BACKGROUND_COLOR_MASK
 
 #define BACKGROUND_IMAGE_INDEX 15
-#define BACKGROUND_IMAGE_SHIFT 21
-#define BACKGROUND_IMAGE_MASK 0x200000
+#define BACKGROUND_IMAGE_SHIFT 15
+#define BACKGROUND_IMAGE_MASK 0x8000
 static inline uint8_t get_background_image_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[BACKGROUND_IMAGE_INDEX];
@@ -257,6 +257,64 @@ static inline uint8_t get_border_bottom_color(const css_computed_style *style,
 #undef BORDER_BOTTOM_COLOR_INDEX
 #undef BORDER_BOTTOM_COLOR_SHIFT
 #undef BORDER_BOTTOM_COLOR_MASK
+
+#define BORDER_BOTTOM_LEFT_RADIUS_INDEX 15
+#define BORDER_BOTTOM_LEFT_RADIUS_SHIFT 16
+#define BORDER_BOTTOM_LEFT_RADIUS_MASK 0x10000
+static inline uint8_t get_border_bottom_left_radius_bits(const
+		css_computed_style *style)
+{
+	uint32_t bits = style->i.bits[BORDER_BOTTOM_LEFT_RADIUS_INDEX];
+	bits &= BORDER_BOTTOM_LEFT_RADIUS_MASK;
+	bits >>= BORDER_BOTTOM_LEFT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_border_bottom_left_radius(const css_computed_style
+		*style, lwc_string **string)
+{
+	uint32_t bits = style->i.bits[BORDER_BOTTOM_LEFT_RADIUS_INDEX];
+	bits &= BORDER_BOTTOM_LEFT_RADIUS_MASK;
+	bits >>= BORDER_BOTTOM_LEFT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.border_bottom_left_radius;
+	
+	return (bits & 0x1);
+}
+#undef BORDER_BOTTOM_LEFT_RADIUS_INDEX
+#undef BORDER_BOTTOM_LEFT_RADIUS_SHIFT
+#undef BORDER_BOTTOM_LEFT_RADIUS_MASK
+
+#define BORDER_BOTTOM_RIGHT_RADIUS_INDEX 15
+#define BORDER_BOTTOM_RIGHT_RADIUS_SHIFT 17
+#define BORDER_BOTTOM_RIGHT_RADIUS_MASK 0x20000
+static inline uint8_t get_border_bottom_right_radius_bits(const
+		css_computed_style *style)
+{
+	uint32_t bits = style->i.bits[BORDER_BOTTOM_RIGHT_RADIUS_INDEX];
+	bits &= BORDER_BOTTOM_RIGHT_RADIUS_MASK;
+	bits >>= BORDER_BOTTOM_RIGHT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_border_bottom_right_radius(const css_computed_style
+		*style, lwc_string **string)
+{
+	uint32_t bits = style->i.bits[BORDER_BOTTOM_RIGHT_RADIUS_INDEX];
+	bits &= BORDER_BOTTOM_RIGHT_RADIUS_MASK;
+	bits >>= BORDER_BOTTOM_RIGHT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.border_bottom_right_radius;
+	
+	return (bits & 0x1);
+}
+#undef BORDER_BOTTOM_RIGHT_RADIUS_INDEX
+#undef BORDER_BOTTOM_RIGHT_RADIUS_SHIFT
+#undef BORDER_BOTTOM_RIGHT_RADIUS_MASK
 
 #define BORDER_BOTTOM_STYLE_INDEX 12
 #define BORDER_BOTTOM_STYLE_SHIFT 16
@@ -581,6 +639,64 @@ static inline uint8_t get_border_top_color(const css_computed_style *style,
 #undef BORDER_TOP_COLOR_SHIFT
 #undef BORDER_TOP_COLOR_MASK
 
+#define BORDER_TOP_LEFT_RADIUS_INDEX 15
+#define BORDER_TOP_LEFT_RADIUS_SHIFT 18
+#define BORDER_TOP_LEFT_RADIUS_MASK 0x40000
+static inline uint8_t get_border_top_left_radius_bits(const css_computed_style
+		*style)
+{
+	uint32_t bits = style->i.bits[BORDER_TOP_LEFT_RADIUS_INDEX];
+	bits &= BORDER_TOP_LEFT_RADIUS_MASK;
+	bits >>= BORDER_TOP_LEFT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_border_top_left_radius(const css_computed_style
+		*style, lwc_string **string)
+{
+	uint32_t bits = style->i.bits[BORDER_TOP_LEFT_RADIUS_INDEX];
+	bits &= BORDER_TOP_LEFT_RADIUS_MASK;
+	bits >>= BORDER_TOP_LEFT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.border_top_left_radius;
+	
+	return (bits & 0x1);
+}
+#undef BORDER_TOP_LEFT_RADIUS_INDEX
+#undef BORDER_TOP_LEFT_RADIUS_SHIFT
+#undef BORDER_TOP_LEFT_RADIUS_MASK
+
+#define BORDER_TOP_RIGHT_RADIUS_INDEX 15
+#define BORDER_TOP_RIGHT_RADIUS_SHIFT 19
+#define BORDER_TOP_RIGHT_RADIUS_MASK 0x80000
+static inline uint8_t get_border_top_right_radius_bits(const css_computed_style
+		*style)
+{
+	uint32_t bits = style->i.bits[BORDER_TOP_RIGHT_RADIUS_INDEX];
+	bits &= BORDER_TOP_RIGHT_RADIUS_MASK;
+	bits >>= BORDER_TOP_RIGHT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_border_top_right_radius(const css_computed_style
+		*style, lwc_string **string)
+{
+	uint32_t bits = style->i.bits[BORDER_TOP_RIGHT_RADIUS_INDEX];
+	bits &= BORDER_TOP_RIGHT_RADIUS_MASK;
+	bits >>= BORDER_TOP_RIGHT_RADIUS_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.border_top_right_radius;
+	
+	return (bits & 0x1);
+}
+#undef BORDER_TOP_RIGHT_RADIUS_INDEX
+#undef BORDER_TOP_RIGHT_RADIUS_SHIFT
+#undef BORDER_TOP_RIGHT_RADIUS_MASK
+
 #define BORDER_TOP_STYLE_INDEX 12
 #define BORDER_TOP_STYLE_SHIFT 28
 #define BORDER_TOP_STYLE_MASK 0xf0000000
@@ -668,6 +784,34 @@ static inline uint8_t get_bottom(const css_computed_style *style, css_fixed
 #undef BOTTOM_INDEX
 #undef BOTTOM_SHIFT
 #undef BOTTOM_MASK
+
+#define BOX_SHADOW_INDEX 15
+#define BOX_SHADOW_SHIFT 20
+#define BOX_SHADOW_MASK 0x100000
+static inline uint8_t get_box_shadow_bits(const css_computed_style *style)
+{
+	uint32_t bits = style->i.bits[BOX_SHADOW_INDEX];
+	bits &= BOX_SHADOW_MASK;
+	bits >>= BOX_SHADOW_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_box_shadow(const css_computed_style *style,
+		lwc_string **string)
+{
+	uint32_t bits = style->i.bits[BOX_SHADOW_INDEX];
+	bits &= BOX_SHADOW_MASK;
+	bits >>= BOX_SHADOW_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.box_shadow;
+	
+	return (bits & 0x1);
+}
+#undef BOX_SHADOW_INDEX
+#undef BOX_SHADOW_SHIFT
+#undef BOX_SHADOW_MASK
 
 #define BOX_SIZING_INDEX 14
 #define BOX_SIZING_SHIFT 22
@@ -878,8 +1022,8 @@ static inline uint8_t get_clip(
 #undef CLIP_MASK
 
 #define COLOR_INDEX 15
-#define COLOR_SHIFT 22
-#define COLOR_MASK 0x400000
+#define COLOR_SHIFT 21
+#define COLOR_MASK 0x200000
 static inline uint8_t get_color_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[COLOR_INDEX];
@@ -1166,8 +1310,8 @@ static inline uint8_t get_content(const css_computed_style *style, const
 #undef CONTENT_MASK
 
 #define COUNTER_INCREMENT_INDEX 15
-#define COUNTER_INCREMENT_SHIFT 23
-#define COUNTER_INCREMENT_MASK 0x800000
+#define COUNTER_INCREMENT_SHIFT 22
+#define COUNTER_INCREMENT_MASK 0x400000
 static inline uint8_t get_counter_increment_bits(const css_computed_style
 		*style)
 {
@@ -1195,8 +1339,8 @@ static inline uint8_t get_counter_increment(const css_computed_style *style,
 #undef COUNTER_INCREMENT_MASK
 
 #define COUNTER_RESET_INDEX 15
-#define COUNTER_RESET_SHIFT 24
-#define COUNTER_RESET_MASK 0x1000000
+#define COUNTER_RESET_SHIFT 23
+#define COUNTER_RESET_MASK 0x800000
 static inline uint8_t get_counter_reset_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[COUNTER_RESET_INDEX];
@@ -1329,8 +1473,8 @@ static inline uint8_t get_empty_cells(const css_computed_style *style)
 #undef EMPTY_CELLS_MASK
 
 #define FILL_OPACITY_INDEX 15
-#define FILL_OPACITY_SHIFT 25
-#define FILL_OPACITY_MASK 0x2000000
+#define FILL_OPACITY_SHIFT 24
+#define FILL_OPACITY_MASK 0x1000000
 static inline uint8_t get_fill_opacity_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[FILL_OPACITY_INDEX];
@@ -1416,8 +1560,8 @@ static inline uint8_t get_flex_direction(const css_computed_style *style)
 #undef FLEX_DIRECTION_MASK
 
 #define FLEX_GROW_INDEX 15
-#define FLEX_GROW_SHIFT 26
-#define FLEX_GROW_MASK 0x4000000
+#define FLEX_GROW_SHIFT 25
+#define FLEX_GROW_MASK 0x2000000
 static inline uint8_t get_flex_grow_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[FLEX_GROW_INDEX];
@@ -1446,8 +1590,8 @@ static inline uint8_t get_flex_grow(const css_computed_style *style, css_fixed
 #undef FLEX_GROW_MASK
 
 #define FLEX_SHRINK_INDEX 15
-#define FLEX_SHRINK_SHIFT 27
-#define FLEX_SHRINK_MASK 0x8000000
+#define FLEX_SHRINK_SHIFT 26
+#define FLEX_SHRINK_MASK 0x4000000
 static inline uint8_t get_flex_shrink_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[FLEX_SHRINK_INDEX];
@@ -1665,8 +1809,8 @@ static inline uint8_t get_font_weight(const css_computed_style *style)
 #undef FONT_WEIGHT_MASK
 
 #define GRID_AUTO_COLUMNS_INDEX 15
-#define GRID_AUTO_COLUMNS_SHIFT 28
-#define GRID_AUTO_COLUMNS_MASK 0x10000000
+#define GRID_AUTO_COLUMNS_SHIFT 27
+#define GRID_AUTO_COLUMNS_MASK 0x8000000
 static inline uint8_t get_grid_auto_columns_bits(const css_computed_style
 		*style)
 {
@@ -1720,8 +1864,8 @@ static inline uint8_t get_grid_auto_flow(const css_computed_style *style)
 #undef GRID_AUTO_FLOW_MASK
 
 #define GRID_AUTO_ROWS_INDEX 15
-#define GRID_AUTO_ROWS_SHIFT 29
-#define GRID_AUTO_ROWS_MASK 0x20000000
+#define GRID_AUTO_ROWS_SHIFT 28
+#define GRID_AUTO_ROWS_MASK 0x10000000
 static inline uint8_t get_grid_auto_rows_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[GRID_AUTO_ROWS_INDEX];
@@ -1748,8 +1892,8 @@ static inline uint8_t get_grid_auto_rows(const css_computed_style *style,
 #undef GRID_AUTO_ROWS_MASK
 
 #define GRID_COLUMN_END_INDEX 15
-#define GRID_COLUMN_END_SHIFT 30
-#define GRID_COLUMN_END_MASK 0x40000000
+#define GRID_COLUMN_END_SHIFT 29
+#define GRID_COLUMN_END_MASK 0x20000000
 static inline uint8_t get_grid_column_end_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[GRID_COLUMN_END_INDEX];
@@ -1776,8 +1920,8 @@ static inline uint8_t get_grid_column_end(const css_computed_style *style,
 #undef GRID_COLUMN_END_MASK
 
 #define GRID_COLUMN_START_INDEX 15
-#define GRID_COLUMN_START_SHIFT 31
-#define GRID_COLUMN_START_MASK 0x80000000
+#define GRID_COLUMN_START_SHIFT 30
+#define GRID_COLUMN_START_MASK 0x40000000
 static inline uint8_t get_grid_column_start_bits(const css_computed_style
 		*style)
 {
@@ -1804,9 +1948,9 @@ static inline uint8_t get_grid_column_start(const css_computed_style *style,
 #undef GRID_COLUMN_START_SHIFT
 #undef GRID_COLUMN_START_MASK
 
-#define GRID_ROW_END_INDEX 14
-#define GRID_ROW_END_SHIFT 0
-#define GRID_ROW_END_MASK 0x1
+#define GRID_ROW_END_INDEX 15
+#define GRID_ROW_END_SHIFT 31
+#define GRID_ROW_END_MASK 0x80000000
 static inline uint8_t get_grid_row_end_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[GRID_ROW_END_INDEX];
@@ -1833,8 +1977,8 @@ static inline uint8_t get_grid_row_end(const css_computed_style *style,
 #undef GRID_ROW_END_MASK
 
 #define GRID_ROW_START_INDEX 14
-#define GRID_ROW_START_SHIFT 1
-#define GRID_ROW_START_MASK 0x2
+#define GRID_ROW_START_SHIFT 0
+#define GRID_ROW_START_MASK 0x1
 static inline uint8_t get_grid_row_start_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[GRID_ROW_START_INDEX];
@@ -1861,8 +2005,8 @@ static inline uint8_t get_grid_row_start(const css_computed_style *style,
 #undef GRID_ROW_START_MASK
 
 #define GRID_TEMPLATE_AREAS_INDEX 14
-#define GRID_TEMPLATE_AREAS_SHIFT 2
-#define GRID_TEMPLATE_AREAS_MASK 0x4
+#define GRID_TEMPLATE_AREAS_SHIFT 1
+#define GRID_TEMPLATE_AREAS_MASK 0x2
 static inline uint8_t get_grid_template_areas_bits(const css_computed_style
 		*style)
 {
@@ -1890,8 +2034,8 @@ static inline uint8_t get_grid_template_areas(const css_computed_style *style,
 #undef GRID_TEMPLATE_AREAS_MASK
 
 #define GRID_TEMPLATE_COLUMNS_INDEX 14
-#define GRID_TEMPLATE_COLUMNS_SHIFT 3
-#define GRID_TEMPLATE_COLUMNS_MASK 0x8
+#define GRID_TEMPLATE_COLUMNS_SHIFT 2
+#define GRID_TEMPLATE_COLUMNS_MASK 0x4
 static inline uint8_t get_grid_template_columns_bits(const css_computed_style
 		*style)
 {
@@ -1919,8 +2063,8 @@ static inline uint8_t get_grid_template_columns(const css_computed_style
 #undef GRID_TEMPLATE_COLUMNS_MASK
 
 #define GRID_TEMPLATE_ROWS_INDEX 14
-#define GRID_TEMPLATE_ROWS_SHIFT 4
-#define GRID_TEMPLATE_ROWS_MASK 0x10
+#define GRID_TEMPLATE_ROWS_SHIFT 3
+#define GRID_TEMPLATE_ROWS_MASK 0x8
 static inline uint8_t get_grid_template_rows_bits(const css_computed_style
 		*style)
 {
@@ -2155,8 +2299,8 @@ static inline uint8_t get_line_height(
 #undef LINE_HEIGHT_MASK
 
 #define LIST_STYLE_IMAGE_INDEX 14
-#define LIST_STYLE_IMAGE_SHIFT 5
-#define LIST_STYLE_IMAGE_MASK 0x20
+#define LIST_STYLE_IMAGE_SHIFT 4
+#define LIST_STYLE_IMAGE_MASK 0x10
 static inline uint8_t get_list_style_image_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[LIST_STYLE_IMAGE_INDEX];
@@ -2484,8 +2628,8 @@ static inline uint8_t get_min_width(const css_computed_style *style, css_fixed
 #undef MIN_WIDTH_MASK
 
 #define OPACITY_INDEX 14
-#define OPACITY_SHIFT 6
-#define OPACITY_MASK 0x40
+#define OPACITY_SHIFT 5
+#define OPACITY_MASK 0x20
 static inline uint8_t get_opacity_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[OPACITY_INDEX];
@@ -2514,8 +2658,8 @@ static inline uint8_t get_opacity(const css_computed_style *style, css_fixed
 #undef OPACITY_MASK
 
 #define ORDER_INDEX 14
-#define ORDER_SHIFT 7
-#define ORDER_MASK 0x80
+#define ORDER_SHIFT 6
+#define ORDER_MASK 0x40
 static inline uint8_t get_order_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[ORDER_INDEX];
@@ -2543,9 +2687,9 @@ static inline uint8_t get_order(const css_computed_style *style, int32_t
 #undef ORDER_SHIFT
 #undef ORDER_MASK
 
-#define ORPHANS_INDEX 13
-#define ORPHANS_SHIFT 0
-#define ORPHANS_MASK 0x1
+#define ORPHANS_INDEX 14
+#define ORPHANS_SHIFT 7
+#define ORPHANS_MASK 0x80
 static inline uint8_t get_orphans_bits(const css_computed_style *style)
 {
 	uint32_t bits = style->i.bits[ORPHANS_INDEX];
@@ -2940,7 +3084,7 @@ static inline uint8_t get_position(const css_computed_style *style)
 #undef POSITION_SHIFT
 #undef POSITION_MASK
 
-#define QUOTES_INDEX 12
+#define QUOTES_INDEX 13
 #define QUOTES_SHIFT 0
 #define QUOTES_MASK 0x1
 static inline uint8_t get_quotes_bits(const css_computed_style *style)
@@ -3030,7 +3174,7 @@ static inline uint8_t get_row_gap(const css_computed_style *style, css_fixed
 #undef ROW_GAP_SHIFT
 #undef ROW_GAP_MASK
 
-#define STROKE_OPACITY_INDEX 11
+#define STROKE_OPACITY_INDEX 12
 #define STROKE_OPACITY_SHIFT 0
 #define STROKE_OPACITY_MASK 0x1
 static inline uint8_t get_stroke_opacity_bits(const css_computed_style *style)
@@ -3168,6 +3312,34 @@ static inline uint8_t get_text_indent(const css_computed_style *style,
 #undef TEXT_INDENT_INDEX
 #undef TEXT_INDENT_SHIFT
 #undef TEXT_INDENT_MASK
+
+#define TEXT_SHADOW_INDEX 11
+#define TEXT_SHADOW_SHIFT 0
+#define TEXT_SHADOW_MASK 0x1
+static inline uint8_t get_text_shadow_bits(const css_computed_style *style)
+{
+	uint32_t bits = style->i.bits[TEXT_SHADOW_INDEX];
+	bits &= TEXT_SHADOW_MASK;
+	bits >>= TEXT_SHADOW_SHIFT;
+	
+	/* 1bit: t : type */
+	return (bits & 0x1);
+}
+static inline uint8_t get_text_shadow(const css_computed_style *style,
+		lwc_string **string)
+{
+	uint32_t bits = style->i.bits[TEXT_SHADOW_INDEX];
+	bits &= TEXT_SHADOW_MASK;
+	bits >>= TEXT_SHADOW_SHIFT;
+	
+	/* 1bit: t : type */
+	*string = style->i.text_shadow;
+	
+	return (bits & 0x1);
+}
+#undef TEXT_SHADOW_INDEX
+#undef TEXT_SHADOW_SHIFT
+#undef TEXT_SHADOW_MASK
 
 #define TEXT_TRANSFORM_INDEX 12
 #define TEXT_TRANSFORM_SHIFT 10

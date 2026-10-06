@@ -118,6 +118,12 @@ style = {
     ('grid_column_end', 1, 'string'),
     ('grid_row_start', 1, 'string'),
     ('grid_row_end', 1, 'string'),
+    ('border_top_left_radius', 1, 'string'),
+    ('border_top_right_radius', 1, 'string'),
+    ('border_bottom_right_radius', 1, 'string'),
+    ('border_bottom_left_radius', 1, 'string'),
+    ('box_shadow', 1, 'string'),
+    ('text_shadow', 1, 'string'),
     # Style group, arrays
     ('font_family', 3, 'string_arr', None, None,
         'Encode font family as an array of string objects, terminated with a '

@@ -138,6 +138,12 @@ grid_row_start.c \
 grid_row_end.c \
 row_gap.c \
 justify_items.c \
-justify_self.c
+justify_self.c \
+border_top_left_radius.c \
+border_top_right_radius.c \
+border_bottom_right_radius.c \
+border_bottom_left_radius.c \
+box_shadow.c \
+text_shadow.c
 
 include $(NSBUILD)/Makefile.subdir

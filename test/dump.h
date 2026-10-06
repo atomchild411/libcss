@@ -506,6 +506,12 @@ static const char *opcode_names[] = {
 	"row-gap",
 	"justify-items",
 	"justify-self",
+	"border-top-left-radius",
+	"border-top-right-radius",
+	"border-bottom-right-radius",
+	"border-bottom-left-radius",
+	"box-shadow",
+	"text-shadow",
 };
 
 static void dump_css_fixed(css_fixed f, char **ptr)
